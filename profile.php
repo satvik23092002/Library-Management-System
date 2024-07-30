@@ -3,25 +3,42 @@ include 'components/_dbconnect.php';
 session_start();
 
 // Check if user is logged in
-if (!isset($_SESSION['loggedin'])) {
+if (isset($_SESSION['user_name'])&& isset($_SESSION['loggedin'])) {
+    $email = $_SESSION['email'];
+
+    $sql = "SELECT * FROM `userregistration` WHERE `email`= '$email'";
+    $result = mysqli_query($conn, $sql);
+    $num= mysqli_num_rows($result);
+    if($num==1){
+       $row=mysqli_fetch_assoc($result);
+       $pic=$row['photo'];
+        $regno=$row['regno'];   
+        $name=$row['user_name'];     
+        $contact_no=$row['contact_no'];        
+        $datetime=$row['timestamp'];        
+    }
+}
+else if (isset($_SESSION['admin_name'])&& isset($_SESSION['loggedin'])) {
+    $email = $_SESSION['email'];
+
+    $sql = "SELECT * FROM `registration` WHERE `email`= '$email'";
+    $result = mysqli_query($conn, $sql);
+    $num= mysqli_num_rows($result);
+    if($num==1){
+       $row=mysqli_fetch_assoc($result);
+       $pic=$row['photo'];
+        $regno=$row['ongc_regno'];   
+        $name=$row['admin_name'];     
+        $contact_no=$row['contact_no'];        
+        $datetime=$row['timestap'];        
+    }
+}
+else {
     header('Location: login.php'); // Redirect to login page if not logged in
     exit;
 }
 ?>
-<?php
-$email = $_SESSION['email'];
 
-$sql = "SELECT * FROM `registration` WHERE `email`= '$email'";
-$result = mysqli_query($conn, $sql);
-$num= mysqli_num_rows($result);
-if($num==1){
-   $row=mysqli_fetch_assoc($result);
-    $ongc_regno=$row['ongc_regno'];     
-    $admin_name=$row['admin_name'];     
-    $contact_no=$row['contact_no'];        
-    $datetime=$row['timestap'];        
-}
-?>
 <!doctype html>
 <html lang="en">
 
@@ -36,8 +53,9 @@ if($num==1){
         font-family: "Lato", sans-serif;
     }
     
-    .nav-link img {
-        width: 35px;
+    .nav-link img {    
+    width: 25px;
+
     }
     
     .logo {
@@ -292,20 +310,24 @@ if($num==1){
             width:500px;
         }
         .information{
-            margin:30px 20px;
-            border-radius: 2px solid black;
-            margin-left:50px;
+            margin:15px 10px;
+           background-color:rgb(228, 228, 124);
+           padding:10px 30px;
+           
+            margin-left:20px;
         }
         .information span{
             margin-right:300px;
+            padding-left:30px;
         }
         .profile .info button a{
             text-decoration:none;
             color:black;
         }
         .profile .info button {
-            margin-left:500px;
+            margin-left:470px;
             margin-top:-5px;
+            background-color:green;
         }
         .left{
             border-radius:5px solid red;
@@ -324,17 +346,17 @@ if($num==1){
        <div class="container">
         <div class="profile">
             <h1>Profile</h1>
-            <input type="image" src="profile2.jpg" alt="User Profile Photo" height="200px">
-            <div class="name"><h2>Welcome <b><?php echo "$admin_name";?></b></h2></div>
+            <input type="image" src="<?php echo"$pic" ?>" alt="User Profile Photo" height="200px">
+            <div class="name"><h2>Welcome <b><?php echo "$name";?></b></h2></div>
             <div class="info">
                 <div class="ongc_regno information">
-                    <b><div class="left">ONGC Reg No.</div></b><div class="right">:<?php echo "$ongc_regno"; ?></div></div>
+                    <b><div class="left">Reg No.</div></b><div class="right">-<?php echo "$regno"; ?></div></div>
                 <div class="email information">
-                    <b><div class="left">Email Id</div></b><div class="right">:<?php echo "$email"; ?></div></div>
+                    <b><div class="left">Email Id</div></b><div class="right">-<?php echo "$email"; ?></div></div>
                 <div class="contact information">
-                    <b><div class="left">Contact No.</div></b><div class="right">:<?php echo "$contact_no"; ?></div></div>
+                    <b><div class="left">Contact No.</div></b><div class="right">-<?php echo "$contact_no"; ?></div></div>
                 <div class="datetime information">
-                    <b><div class="left">Created At</div></b><div class="right">:<?php echo "$datetime"; ?></div></div>
+                    <b><div class="left">Created At</div></b><div class="right">-<?php echo "$datetime"; ?></div></div>
                     <button type="button" class="button"><a href="edit_profile.php">Edit Profile</a></button>
             </div>
         </div>
@@ -349,8 +371,8 @@ if($num==1){
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <img class="logo" src="logo.png" alt="Webiste Logo" srcset="">
-        <a href="main.php">Thesis</a>
         <a href="book.php">BOOKS</a>
+        <a href="main.php">Thesis</a>
         <a href="#">Services</a>
         <a href="#">Clients</a>
         <a href="#">Contact</a>

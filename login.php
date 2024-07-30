@@ -162,7 +162,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                $_SESSION['loggedin']=true;
                $_SESSION['admin_name']=$Adminname;
                $_SESSION['email']=$email;
-               header("location: main.php");
+               header("location: book.php");
             }
             else{
                 echo  '<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -187,7 +187,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         <h1>BOOK VAULT</h1>
     </div>
     <div class="container">
-        <form action="/projects/login.php" method="post">
+        <form action="/projects/Library-management-System/login.php" method="post">
             <label for="email">Enter ONGC Email ID</label>
             <input type="email" name="email" id="email" placeholder="username@ongc.co.in" required>
 
@@ -196,7 +196,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
             <button type="submit">LOG IN</button>
             <h3>New User?</h3>
-            <h3><a href="/projects/adminsignup.php">Sign Up</a></h3>
+            <h3><a href="/projects/Library-management-System/adminsignup.php">Sign Up</a></h3>
 
         </form>
     </div>

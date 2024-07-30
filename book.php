@@ -7,6 +7,8 @@ if (!isset($_SESSION['loggedin'])) {
     header('Location: login.php'); // Redirect to login page if not logged in
     exit;
 }
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -17,24 +19,15 @@ if (!isset($_SESSION['loggedin'])) {
     <title>Book Vault</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <style>
-    body {
+        
+        <style>
+            body {
         font-family: "Lato", sans-serif;
     }
 
     .nav-link img {
-        width: 35px;
-    }
-
-    #Thesis .container {
-        padding-left: 80px;
-        /* margin-left:100px;? */
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        margin-bottom:100px;
-        /* min-height:80vh; */
-        margin:auto;
+        width: 25px;
+        height:30px;
     }
 
     .logo {
@@ -47,7 +40,7 @@ if (!isset($_SESSION['loggedin'])) {
         /* margin-right:200px; */
         /* weight:40px; */
     }
-
+    
     .sidenav {
         margin-top: 90px;
         height: 100%;
@@ -73,6 +66,7 @@ if (!isset($_SESSION['loggedin'])) {
 
     .sidenav a:hover {
         color: #f1f1f1;
+        text-decoration:none;
     }
 
     .sidenav .closebtn {
@@ -83,29 +77,7 @@ if (!isset($_SESSION['loggedin'])) {
         margin-left: 50px;
     }
 
-    .card {
-        background-color: rgb(238, 213, 168);
-        margin: 30px;
-        padding: 5px;
-        /* Add shadows to create the "card" effect */
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        transition: 0.3s;
-        height: 200px;
-        width: 230px;
-    }
-
-    /* On mouse-over, add a deeper shadow */
-    .card:hover {
-        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-    }
-
-    /* Add some padding inside the card container */
-    .detail {
-        padding: 10px 16px;
-        font-size: 12px;
-
-    }
-
+    
     @media screen and (max-height: 450px) {
         .sidenav {
             margin-top: 50px;
@@ -118,17 +90,9 @@ if (!isset($_SESSION['loggedin'])) {
     }
     </style>
     <style>
-    /* Set height of body and the document to 100% to enable "full page tabs" */
-    #Thesis .heading {
-        margin-top: 20px;
-        text-align: center;
-        color:white;
-        background-color:red;
-        opacity:50%;
-        
-    }
 
-    body,
+        
+        body,
     html {
         height: 100%;
         margin: 0;
@@ -160,94 +124,27 @@ if (!isset($_SESSION['loggedin'])) {
         padding-top: 100px;
         height: 100%;
     }
-
-    #Thesis {
+    
+    #Books {
         background-color: white;
-        background-image: url(liberary1.png);
-        background-size:cover;
-        background-repeat:no-repeat;
+        /* background-image: url(liberary1.png); */
+        /* background-size:cover;
+        background-repeat:no-repeat; */
     }
 
-    #AddThesis {
+    #AddBooks {
         background-color: white;
-        background-image: url(libraryBG.jpg);
+        /* background-image: url(libraryBG.jpg); */
         background-size: cover;
         height: 100%;
+        min-height:100vh;
     }
 
-    #AddThesis .container {
-        max-width: 46%;
-        margin: auto;
-        margin-top: 50px;
-        /* margin-bottom:0px; */
-        /* justify-content:center; */
-        background-color: rgb(223, 218, 214);
-        opacity: 90%;
-        border-radius: 10px;
-        padding: 15px 30px;
-        margin-bottom:40px;
-
-    }
-
-    #AddThesis .container form {
-        display: flex;
-        flex-direction: column;
-        margin: 20px 10px;
-        opacity: 100%;
-    }
-
-    #AddThesis .container form input {
-        padding-left: 10px;
-    }
-
-    #AddThesis .container form textarea {
-        padding-left: 10px;
-    }
-
-    .add {
-        background-color: green;
-        color: black;
-    }
-
-    #reset {
-        background-color: rgb(155, 235, 240);
-        color: black;
-    }
-
-    .button {
-        display: flex;
-        justify-content: center;
-
-    }
-
-    #explore,
-    #delete {
-        margin: 5px 15px;
-        /* padding:5px; */
-    }
-
-    #explore {
-        background-color: rgb(128, 209, 113);
-        border-radius: 10px;
-    }
-
-    #delete {
-        background-color: rgb(214, 107, 107);
-        border-radius: 10px;
-
-    }
-
-    #explore a,
-    #delete a {
-        text-decoration: none;
-        color: black;
-    }
-    </style>
     <style>
     body {
         font-family: Arial, Helvetica, sans-serif;
     }
-
+    
     * {
         box-sizing: border-box;
     }
@@ -328,31 +225,19 @@ if (!isset($_SESSION['loggedin'])) {
     .box {
         position: fixed;
         width: 100%;
-        z-index: 3;
+        z-index: 10;
     }
 
-     #Thesis .footer {
+     .footer {
         color: white;
         height: 50px;
-        width: 98.9vw;
+        width: 98.8vw;
         background-color: black;
         text-align: center;
         padding: 10px;
         opacity: 0.9;
-        margin-left:-20px;
     }
-    #AddThesis .footer {
-        color: white;
-        height: 50px;
-        width: 98.9vw;
-        background-color: black;
-        text-align: center;
-        padding: 10px;
-        opacity: 0.9;
-        margin-left:-20px;
-        /* margin-top:40px; */
-    }
-
+ 
     .footer:hover {
         opacity: 1;
     }
@@ -368,10 +253,141 @@ if (!isset($_SESSION['loggedin'])) {
         background-color:orange;
         border-radius:10px;
         position:fixed;
+        z-index:2;
         bottom:20px;
         left:20px;
     }
+    .carousel-item img{
+        height:400px;
+        object-fit:cover;
+        object-position:center center;
+
+    }
+    .carousel-item2 img{
+        height:400px;
+        object-fit:cover;
+        object-position:center top;
+
+    }
+    .carousel-item7 img{
+        height:400px;
+        object-fit:cover;
+        object-position:right top;
+
+    }
     </style>
+<link  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet"/>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 200px;
+  gap: 20px;
+
+  > div {
+    flex: 0 0 120px;
+    border-radius: 0.5rem;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+    box-shadow: 1px 5px 15px #1e0e3e;
+    position: relative;
+    overflow: hidden;
+
+    .content {
+      font-size: 1.5rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      opacity: 0;
+      flex-direction: column;
+      height: 100%;
+      justify-content: flex-end;
+      background: rgb(2, 2, 46);
+      background: linear-gradient(
+        0deg,
+        rgba(2, 2, 46, 0.6755077030812324) 0%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: translatey(100%);
+      transition: opacity 0.5s ease-in-out, transform 0.5s 0.2s;
+      visibility: hidden;
+
+      span {
+        display: block;
+        margin-top: 5px;
+        font-size: 1.2rem;
+      }
+    }
+
+    &:hover {
+      flex: 0 0 250px;
+      box-shadow: 1px 3px 15px #7645d8;
+      /* transform: translatey(-30px); */
+    }
+
+    &:hover .content {
+      opacity: 1;
+      transform: translatey(0%);
+      visibility: visible;
+    }
+  }
+}
+</style>
+<style>
+   
+    #Books h3{
+        margin:30px 0px;
+    }
+    /* #Books button{
+        background-color:blue;
+        padding:10px;
+        font-size:20px;
+        color:white;
+        border-radius:10px;
+        margin-top:50px;
+        margin-bottom:0px;
+    } */
+    #Books button{
+      background-color: #04AA6D; /* Green */
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  /* text-decoration: none;
+  display: inline-block; */
+  font-size: 16px;
+  margin: 4px 2px;
+  margin-top:50px;
+  cursor: pointer;
+  /* -webkit-transition-duration: 0.4s; 
+  transition-duration: 0.4s; */
+    }
+    #Books button a{
+      text-decoration:none;
+      color: white;
+    }
+
+    #Books button:hover{
+      background-color:  rgb(152, 152, 235);
+      box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+    #Books{
+        padding-bottom:30px;
+        box-shadow: 10px;
+    }
+</style>
+
 </head>
 
 <body>
@@ -380,27 +396,126 @@ if (!isset($_SESSION['loggedin'])) {
         <?php
     include 'components/_navbar.php';
     ?>
-        <button class="tablink" onclick="openPage('Thesis', this, 'green')" id="defaultOpen">Available Thesis</button>
-        <button class="tablink" onclick="openPage('AddThesis', this, 'orange')">Add Another Thesis</button>
+        <button class="tablink" onclick="openPage('Books', this, 'green')" id="defaultOpen">Books</button>
+        <button class="tablink" onclick="openPage('AddBooks', this, 'orange')">Add Books</button>
     </div>
 
-    <div id="Thesis" class="tabcontent">
-       <button type="button"><a href="example.pdf" target="_blank">E-Book</a></button>
-       <button type="button"><a href="example.pdf" >Book</a></button>
+    <div id="Books" class="tabcontent">
+    <div class="wrapper">
+  <div id="carousel-slider" class="carousel slide carousel-fade" data-ride="carousel" data-interval="3000">
+      <!--Indicators-->
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-slider" data-slide-to="1"></li>
+        <li data-target="#carousel-slider" data-slide-to="3"></li>
+        <li data-target="#carousel-slider" data-slide-to="4"></li>
+        <li data-target="#carousel-slider" data-slide-to="5"></li>
+        <li data-target="#carousel-slider" data-slide-to="6"></li>
+        <li data-target="#carousel-slider" data-slide-to="7"></li>
+      </ol>
+      <!--Indicators-->
+      <!--Slides-->
+      <div class="carousel-inner" role="listbox">
+        <!--First slide-->
+        <div class="carousel-item active carousel-item1 ">
+          <img class="d-block w-100" src="photo/bookimg12.jpg" alt="First slide">
+        </div>
+      
+        <div class="carousel-item carousel-item2">
+          <img class="d-block w-100" src="photo/bookimg1.jpg" alt="Second slide">
+        </div>
+        <div class="carousel-item carousel-item3">
+          <img class="d-block w-100" src="photo/bookimg3.jpg" alt="Third slide">
+        </div>
+        <div class="carousel-item carousel-item4">
+          <img class="d-block w-100" src="photo/bookimg7.jpg" alt="Forth slide">
+        </div>
+        <div class="carousel-item carousel-item5">
+          <img class="d-block w-100" src="photo/bookimg2.jpg" alt=" Fifth slide">
+        </div>
+        <div class="carousel-item carousel-item6">
+          <img class="d-block w-100" src="photo/bookimg6.jpg" alt="Sixth slide">
+        </div>
+        <div class="carousel-item carousel-item7">
+          <img class="d-block w-100" src="photo/bookimg8.jpg" alt="Seventh slide">
+        </div>
+       
+      </div>
     </div>
+</div>
 
-    <div id="AddThesis" class="tabcontent">
+
+<!-- card crousel  -->
+<h3>Books Recommended for You</h3>
+<div class="container">
+<?php
+    $sql="SELECT * FROM `book` ORDER BY `ratings` DESC LIMIT 10";
+    $result=mysqli_query($conn,$sql);
+    $num=mysqli_num_rows($result);
+    $no=0;
+    if($num>0){
+    while($row=mysqli_fetch_assoc($result)){
+      $pic = $row['book_image'];
+      $author_name = $row['author_name'];
+      $book = $row['book_name'];
+      $rating = $row['ratings'];
+     echo
+        '<div style="background-image: url(photo/'.$pic.'); background-repeat: no-repeat; background-size:cover;">
+            <div class="content">
+              <h4>'.$book.'</h4>
+              <span>'.$author_name.'</span>
+              <span>'.$rating.'</span>
+              </div>
+            </div>';
+
+}}
+?>
+</div>
+<br>
+
+<h3>Books Recently Readed</h3>
+<div class="container">
+<?php
+    $sql="SELECT * FROM `book` LIMIT 10";
+    $result=mysqli_query($conn,$sql);
+    $num=mysqli_num_rows($result);
+    $no=0;
+    if($num>0){
+    while($row=mysqli_fetch_assoc($result)){
+      $pic = $row['book_image'];
+      $author_name = $row['author_name'];
+      $book = $row['book_name'];
+      $rating = $row['ratings'];
+     echo
+        '<div style="background-image: url(photo/'.$pic.'); background-repeat: no-repeat; background-size:cover;">
+            <div class="content">
+              <h4>'.$book.'</h4>
+              <span>'.$author_name.'</span>
+              <span>'.$rating.'</span>
+              </div>
+            </div>';
+
+}}
+?>
+</div>
+<center>
+      <button type="button"><a href="morebooks.php" >Explore More</a></button>
+     </div>
+    </center>
+
+    <div id="AddBooks" class="tabcontent">
        
     </div>
     
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <img class="logo" src="logo.png" alt="Webiste Logo" srcset="">
-        <a href="main.php">Thesis</a>
         <a href="book.php">Books</a>
+        <a href="main.php">Thesis</a>
+        <a href="book.php">Newspapers</a>
         <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+        <a href="users.php">Users</a>
+        <a href="showFeedback.php">Feedbacks</a>
     </div>
 
     <button class="open-button" onclick="openForm()">Feedback..</button>
@@ -420,6 +535,11 @@ if (!isset($_SESSION['loggedin'])) {
     <div class="arrow">
     <a href="#"><img src="uparrow.png" alt="go to top" ></a>
     </div>
+    <footer>
+            <div class="footer">
+                <h5>copyright &#169; 2024 All Rights Reserved </h5>
+            </div>
+            </footer>
     
     
     
@@ -473,7 +593,17 @@ if (!isset($_SESSION['loggedin'])) {
     function showalert(){
         alert("ThankYou For Your Valuable Feedback");
     }
+    const refreshBtn = document.getElementById("btnRefresh");
+
+    function handleClick() {
+    window.location.reload();
+    }
+
+
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </body>
 
 </html>

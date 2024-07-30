@@ -29,7 +29,7 @@ if (!isset($_SESSION['loggedin'])) {
     }
 
     .nav-link img {
-        width: 35px;
+        width: 25px;
     }
 
     .logo {
@@ -241,8 +241,8 @@ if (!isset($_SESSION['loggedin'])) {
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <img class="logo" src="logo.png" alt="Webiste Logo" srcset="">
-        <a href="main.php">Thesis</a>
         <a href="book.php">Books</a>
+        <a href="main.php">Thesis</a>
         <a href="#">Services</a>
         <a href="#">Clients</a>
         <a href="#">Contact</a>

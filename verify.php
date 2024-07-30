@@ -152,14 +152,14 @@ else{
     </div>
   
     <div class="container">
-        <form action="/projects/verify.php" method="post">
+        <form action="/projects/Library-management-System/verify.php" method="post">
 
             <label for="OTP">Enter OTP</label>
             <input type="number" name="OTP" id="OTP" placeholder="OTP" required>
             <input type="hidden" name="otp" value= <?php echo $otp ?>>
             <button type="submit">verify</button>
             <h3>Back To Login</h3>
-            <h3><a href="/projects/login.php">Login</a></h3>
+            <h3><a href="/projects/Library-management-System/login.php">Login</a></h3>
 
         </form>
     </div>

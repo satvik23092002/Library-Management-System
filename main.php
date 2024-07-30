@@ -23,7 +23,7 @@ if (!isset($_SESSION['loggedin'])) {
     }
 
     .nav-link img {
-        width: 35px;
+        width: 25px;
     }
 
     #Thesis .container {
@@ -35,6 +35,7 @@ if (!isset($_SESSION['loggedin'])) {
         margin-bottom:100px;
         /* min-height:80vh; */
         margin:auto;
+        min-height:80vh;
     }
 
     .logo {
@@ -120,7 +121,7 @@ if (!isset($_SESSION['loggedin'])) {
     <style>
     /* Set height of body and the document to 100% to enable "full page tabs" */
     #Thesis .heading {
-        margin-top: 20px;
+        margin-top: 10px;
         text-align: center;
         color:white;
         background-color:red;
@@ -377,8 +378,8 @@ if (!isset($_SESSION['loggedin'])) {
 <body>
     <div class="box">
 
-        <?php
-    include 'components/_navbar.php';
+    <?php
+        include 'components/_navbar.php';
     ?>
         <button class="tablink" onclick="openPage('Thesis', this, 'green')" id="defaultOpen">Available Thesis</button>
         <button class="tablink" onclick="openPage('AddThesis', this, 'orange')">Add Another Thesis</button>
@@ -405,8 +406,8 @@ if (!isset($_SESSION['loggedin'])) {
                <p>'.substr($desc,0,85).'...</p>
                </div>
                <div class="button">
-               <button type="button" id="explore"><a href="/projects/thesis.php?thesis_id='.$thesis_id.'">Explore</a></button>
-               <button type="button" id="delete"><a href="/projects/delete.php?thesis_id='.$thesis_id.'">Delete</a></button>
+               <button type="button" id="explore"><a href="/projects/Library-management-System/thesis.php?thesis_id='.$thesis_id.'">Explore</a></button>
+               <button type="button" id="delete"><a href="/projects/Library-management-System/delete.php?thesis_id='.$thesis_id.'">Delete</a></button>
                </div>
                </div>';}}
                ?>
@@ -444,7 +445,7 @@ if (!isset($_SESSION['loggedin'])) {
             }
              ?>
         <div class="container">
-            <form action="/projects/main.php" method="post">
+            <form action="/projects/Library-management-System/main.php" method="post">
                 <label for="name">Enter Thesis Name</label>
                 <input type="name" name="name" id="name" placeholder="Thesis name" required><br>
                 <label for="">Enter Author Name</label>
@@ -464,8 +465,8 @@ if (!isset($_SESSION['loggedin'])) {
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <img class="logo" src="logo.png" alt="Webiste Logo" srcset="">
-        <a href="main.php">Thesis</a>
         <a href="book.php">Books</a>
+        <a href="main.php">Thesis</a>
         <a href="#">Services</a>
         <a href="#">Clients</a>
         <a href="#">Contact</a>
